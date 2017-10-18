@@ -1,0 +1,82 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+    <ApplicationIcon />
+    <OutputType>Library</OutputType>
+    <StartupObject />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="core\node_modules\**" />
+    <Compile Remove="core\src\database\**" />
+    <EmbeddedResource Remove="core\node_modules\**" />
+    <EmbeddedResource Remove="core\src\database\**" />
+    <None Remove="core\node_modules\**" />
+    <None Remove="core\src\database\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="core\dist\API_DOCUMENTATION.md" />
+    <None Remove="core\dist\nimiq.js" />
+    <None Remove="core\dist\nimiq.js.map" />
+    <None Remove="core\dist\node.js" />
+    <None Remove="core\dist\node.js.map" />
+    <None Remove="core\dist\web-babel.js" />
+    <None Remove="core\dist\web-babel.js.map" />
+    <None Remove="core\dist\web-crypto.js" />
+    <None Remove="core\dist\web-crypto.js.map" />
+    <None Remove="core\dist\web.js" />
+    <None Remove="core\dist\web.js.map" />
+    <None Remove="core\package.json" />
+    <None Remove="core\src\index.js" />
+    <None Remove="core\yarn.lock" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="core\dist\nimiq.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="core\dist\nimiq.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="core\dist\node.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="core\dist\node.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="core\dist\web-babel.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="core\dist\web-babel.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="core\dist\web-crypto.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="core\dist\web-crypto.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="core\dist\web.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="core\dist\web.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="core\package.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="core\src\index.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="core\yarn.lock">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SocketIoClientDotNet" Version="1.0.3" />
+  </ItemGroup>
+
+</Project>

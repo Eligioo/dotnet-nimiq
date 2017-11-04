@@ -11,20 +11,26 @@ namespace NimiqNetwork.Core
     {
         public static event HashRateChangedEventHandler HashRateChanged;
 
-        public int hashrate { get; private set; }
+        public int HashRate { get; private set; }
 
         public Miner()
         {
+            Nimiq.LifeCheck += Nimiq_LifeCheck;
+
             Client.Socket.On("HashRateChanged", (jData) =>
             {
                 JObject jObject = (JObject)jData;
                 var deserialize = jObject.ToObject<HashRateChangedStruct>();
                 if (HashRateChanged != null)
                     HashRateChanged.Invoke();
-                hashrate = deserialize.hashrate;
+                HashRate = deserialize.hashrate;
             });
         }
 
+        private void Nimiq_LifeCheck(LifeCheckStruct lifeCheckStruct)
+        {
+
+        }
     }
 
     class HashRateChangedStruct

@@ -122,8 +122,7 @@ try {
                     "addressMiner"          : $.miner.address,
                     "hashrate"              : $.miner.hashrate,
                 })
-                console.log("send lifecheck")
-            }, 500)
+            }, 1000)
 
         });
     });

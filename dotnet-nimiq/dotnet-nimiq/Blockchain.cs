@@ -11,18 +11,33 @@ namespace NimiqNetwork.Core
     {
         public static event HeadChangedEventHandler HeadChanged;
 
-        public int height { get; private set; }
+        //public head { get; private set; }
+        public HeadHash HeadHash { get; private set; }
+        public double TotalWork { get; private set; }
+        public int Height { get; private set; }
+        //public path { get; private set; }
+        public bool Busy { get; private set; }
 
         public Blockchain()
         {
+            Nimiq.LifeCheck += Nimiq_LifeCheck;
+
             Client.Socket.On("HeadChanged", (jData) =>
             {
                 JObject jObject = (JObject)jData;
                 var deserialize = jObject.ToObject<HeadChangedStruct>();
                 if (HeadChanged != null)
                     HeadChanged.Invoke();
-                height = deserialize.height;
+                Height = deserialize.height;
             });
+        }
+
+        private void Nimiq_LifeCheck(LifeCheckStruct lifeCheckStruct)
+        {
+            HeadHash = lifeCheckStruct.headHash;
+            TotalWork = lifeCheckStruct.totalWork;
+            Height = lifeCheckStruct.height;
+            Busy = lifeCheckStruct.busy;
         }
     }
 

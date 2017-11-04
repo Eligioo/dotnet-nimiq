@@ -6,8 +6,12 @@ using System.Text;
 
 namespace NimiqNetwork.Core
 {
-    public partial class Nimiq
+    public delegate void LifeCheckEventHander(LifeCheckStruct lifeCheckStruct);
+
+    public class Nimiq
     {
+        public static event LifeCheckEventHander LifeCheck;
+
         public Consensus Concensus;
         public Blockchain Blockchain;
         public Miner Miner;
@@ -62,6 +66,8 @@ namespace NimiqNetwork.Core
             {
                 JObject jObject = (JObject)jData;
                 var deserialize = jObject.ToObject<LifeCheckStruct>();
+                if (LifeCheck != null)
+                    LifeCheck.Invoke(deserialize);
             });
         }
     }

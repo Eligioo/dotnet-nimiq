@@ -29,9 +29,9 @@ namespace TestApplication
         private void Miner_HashRateChanged()
         {
             if (label4.InvokeRequired)
-                label4.BeginInvoke((MethodInvoker)delegate () { label4.Text = "Mining at "+ nimiq.Miner.hashrate +" H/s on Testnet.";});
+                label4.BeginInvoke((MethodInvoker)delegate () { label4.Text = "Mining at "+ nimiq.Miner.HashRate +" H/s on Testnet.";});
             else
-                label4.Text = "Mining at " + nimiq.Miner.hashrate + " H/s on Testnet.";
+                label4.Text = "Mining at " + nimiq.Miner.HashRate + " H/s on Testnet.";
         }
 
         private void Consensus_Established()
@@ -42,17 +42,17 @@ namespace TestApplication
                 label1.Text = "Consensus established";
 
             if (label2.InvokeRequired)
-                label2.BeginInvoke((MethodInvoker)delegate () { label2.Text = nimiq.Blockchain.height.ToString(); });
+                label2.BeginInvoke((MethodInvoker)delegate () { label2.Text = nimiq.Blockchain.Height.ToString(); });
             else
-                label2.Text = nimiq.Blockchain.height.ToString();
+                label2.Text = nimiq.Blockchain.Height.ToString();
         }
 
         private void Blockchain_HeadChanged()
         {
             if (label2.InvokeRequired)
-                label2.BeginInvoke((MethodInvoker)delegate () { label2.Text = nimiq.Blockchain.height.ToString(); });
+                label2.BeginInvoke((MethodInvoker)delegate () { label2.Text = nimiq.Blockchain.Height.ToString(); });
             else
-                label2.Text = nimiq.Blockchain.height.ToString();
+                label2.Text = nimiq.Blockchain.Height.ToString();
         }
     }
 }
